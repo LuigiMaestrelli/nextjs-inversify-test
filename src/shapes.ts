@@ -11,7 +11,9 @@ export class Shapes implements IShape {
     @inject(TYPES.Circle) private readonly circle: Circle,
     @inject(TYPES.Square) private readonly square: Square,
     @inject(TYPES.Triangle) private readonly triangle: Triangle
-  ) {}
+  ) {
+    console.log("Ctr");
+  }
 
   public getCircle(): string {
     return this.circle.whoAmI();

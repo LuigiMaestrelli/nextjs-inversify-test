@@ -1,25 +1,28 @@
-import { diContainer } from "@/di";
-import { IShape } from "@/interfaces/shapes";
-import { TYPES } from "@/types";
+import { useShapes } from "@/useShapes";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 import styles from "../../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const [count, setCount] = useState(0);
+
+  const shapes = useShapes();
+
   const handleClickTestCircle = () => {
-    const shape = diContainer.get<IShape>(TYPES.Shapes);
-    alert(shape.getCircle());
+    setCount(count + 1);
+    alert(shapes.getCircle());
   };
 
   const handleClickTestSquare = () => {
-    const shape = diContainer.get<IShape>(TYPES.Shapes);
-    alert(shape.getSquare());
+    setCount(count + 1);
+    alert(shapes.getSquare());
   };
 
   const handleClickTestTriangle = () => {
-    const shape = diContainer.get<IShape>(TYPES.Shapes);
-    alert(shape.getTriangle());
+    setCount(count + 1);
+    alert(shapes.getTriangle());
   };
 
   return (
@@ -32,7 +35,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">Next.js! --- {count}</a>
         </h1>
 
         <button onClick={handleClickTestCircle}>Teste circle</button>
